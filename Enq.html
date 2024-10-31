@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enquiry Page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(to right, #4e4376, #2b5876);
+            color: #333;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 90%;
+            max-width: 1000px;
+            gap: 2rem;
+        }
+
+        .animation-box {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: radial-gradient(circle, #fff, #dde1e7);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            animation: spin 8s infinite ease-in-out;
+            transform-style: preserve-3d;
+        }
+
+        .enquiry-form {
+            background-color: #fff;
+            padding: 40px 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 500px;
+            transform: perspective(600px) rotateY(15deg);
+            transition: transform 0.5s;
+        }
+
+        .enquiry-form:hover {
+            transform: perspective(600px) rotateY(0);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            color: #444;
+            font-weight: bold;
+        }
+
+        input, select, button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 8px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            outline: none;
+            transition: box-shadow 0.3s;
+        }
+
+        input:focus, select:focus {
+            box-shadow: 0 4px 8px rgba(78, 67, 118, 0.2);
+        }
+
+        .submit-btn {
+            background-color: #4e4376;
+            color: white;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .submit-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 15px rgba(78, 67, 118, 0.4);
+        }
+
+        .submit-btn:active {
+            transform: scale(0.98);
+        }
+
+        @keyframes spin {
+            0% { transform: rotateX(0) rotateY(0); }
+            50% { transform: rotateX(180deg) rotateY(180deg); }
+            100% { transform: rotateX(360deg) rotateY(360deg); }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            .enquiry-form {
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="animation-box">
+            <!-- Placeholder for 3D Animation -->
+        </div>
+        <div class="enquiry-form">
+            <h1> Enquiry</h1>
+            <form id="enquiryForm">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" placeholder="Your full name" required>
+
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="example@domain.com" required>
+
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="123-456-7890" required>
+
+                <label for="checkin">Check-in Date</label>
+                <input type="date" id="checkin" name="checkin" required>
+
+                <label for="checkout">Check-out Date</label>
+                <input type="date" id="checkout" name="checkout" required>
+
+                <label for="room">Room Type</label>
+                <select id="room" name="room" required>
+                    <option value="" disabled selected>Select a room type</option>
+                    <option value="standard">Standard Room</option>
+                    <option value="deluxe">Deluxe Room</option>
+                    <option value="suite">Suite</option>
+                </select>
+
+                <button type="submit" class="submit-btn">Submit Enquiry</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        document.getElementById('enquiryForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            alert('Your enquiry has been submitted successfully!');
+        });
+
+        const submitButton = document.querySelector('.submit-btn');
+
+        submitButton.addEventListener('mouseover', () => {
+            submitButton.style.transform = 'scale(1.1)';
+        });
+
+        submitButton.addEventListener('mouseleave', () => {
+            submitButton.style.transform = 'scale(1)';
+        });
+    </script>
+</body>
+</html>
